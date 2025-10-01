@@ -1,4 +1,5 @@
-from transacoes_financeiras import TransacaoFinanceira
+from src.transacoes_financeiras import TransacaoFinanceira
+from src.utils.transacao_segura import processar_transacao
 
 if __name__ == "__main__":
     TRANSACOES = [
@@ -12,15 +13,9 @@ if __name__ == "__main__":
         {"correlation_id": 8, "datetime": "09/09/2023 14:19:01", "conta_origem": 573659065, "conta_destino": 675869708, "VALOR": 150},
         {"correlation_id": 9, "datetime": "09/09/2023 14:19:02", "conta_origem": 573659077, "conta_destino": 675869722, "VALOR": 150},
     ]
-
+ 
     executor = TransacaoFinanceira()
     for item in TRANSACOES:
-        executor.transferir(
-            item["correlation_id"],
-            item["conta_origem"],
-            item["conta_destino"],
-            item["VALOR"]
-        )
-    print("Todas as transacoes foram processadas.")
-
-#aqui tinhamos um problema de concorrência onde 
+        processar_transacao(executor, item)
+    
+    print("Processamento concluído com resiliência a erros.")

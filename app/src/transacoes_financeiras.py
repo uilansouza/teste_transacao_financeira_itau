@@ -1,6 +1,6 @@
-from acessa_dados import AcessoDados
-from exceptions.valida_valor_exception import ValorInvalidoException
-from exceptions.conta_exception import ValidacaoContaException
+from src.acessa_dados import AcessoDados
+from src.exceptions.valida_valor_exception import ValorInvalidoException
+from src.exceptions.conta_exception import ValidacaoContaException
 
 class TransacaoFinanceira(AcessoDados):
     def __init__(self):

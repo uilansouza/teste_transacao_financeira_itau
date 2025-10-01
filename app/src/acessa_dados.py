@@ -1,4 +1,4 @@
-from contas_saldo import ContasSaldo
+from src.contas_saldo import ContasSaldo
 class AcessoDados:
     def __init__(self):
         self.tabela_saldos = [
